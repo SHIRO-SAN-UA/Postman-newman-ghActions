@@ -43,4 +43,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: RunReports
-          path: testResults 
+          path: testResults
+
+      # Deploy report to GH Pages
+      - name: Commit and Push Report
+        run: |
+          git checkout -b gh-pages
+          git add testResults/
+          git commit -m "Add Newman report"
+          git push origin gh-pages
